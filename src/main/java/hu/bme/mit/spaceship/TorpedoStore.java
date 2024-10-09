@@ -32,6 +32,7 @@ public class TorpedoStore {
   }
 
   public boolean fire(int numberOfTorpedos){
+    //throws exception if not enough torpedoes
     if(numberOfTorpedos < 1 || numberOfTorpedos > this.torpedoCount){
       throw new IllegalArgumentException("numberOfTorpedos");
     }
@@ -42,7 +43,7 @@ public class TorpedoStore {
     double r = generator.nextDouble();
 
     if (r >= FAILURE_RATE) {
-      // successful firing
+      // successful firing (some rando wrote =- instead of -= so corrected it)
       this.torpedoCount -= numberOfTorpedos;
       success = true;
     } else {
